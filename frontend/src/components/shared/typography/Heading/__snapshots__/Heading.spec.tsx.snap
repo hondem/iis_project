@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> Renders without fail. (Snapshot) 1`] = `
+.c0 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+<h1
+  className="c0"
+/>
+`;

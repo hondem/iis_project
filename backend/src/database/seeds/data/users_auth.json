@@ -1,0 +1,26 @@
+[
+  {
+    "email": "admin@test.com",
+    "password": "$2a$10$yKAlh4SR.cDIufxxVrXSKuNyfl.vq5wENi6XTnbTwCk2c5mIJX7e2",
+    "authLevel": "admin",
+    "companyId": 1
+  },
+  {
+    "email": "accountant@test.com",
+    "password": "$2a$10$yKAlh4SR.cDIufxxVrXSKuNyfl.vq5wENi6XTnbTwCk2c5mIJX7e2",
+    "authLevel": "accountant",
+    "companyId": 1
+  },
+  {
+    "email": "personalist@test.com",
+    "password": "$2a$10$yKAlh4SR.cDIufxxVrXSKuNyfl.vq5wENi6XTnbTwCk2c5mIJX7e2",
+    "authLevel": "personalist",
+    "companyId": 1
+  },
+  {
+    "email": "god@test.com",
+    "password": "$2a$10$yKAlh4SR.cDIufxxVrXSKuNyfl.vq5wENi6XTnbTwCk2c5mIJX7e2",
+    "authLevel": "god",
+    "companyId": 1
+  }
+]

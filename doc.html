@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0067)https://www.fit.vutbr.cz/study/courses/IIS/private/projekt/doc.html -->
+<html class="gr__fit_vutbr_cz">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2" />
+
+    <title>IIS Projekt - PayDay docs</title>
+    <style type="text/css">
+      table {
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        border: 1px solid black;
+        padding: 0.3em 0.5em;
+        text-align: left;
+      }
+      dt {
+        font-weight: bold;
+        margin-top: 0.5em;
+      }
+
+      .inline-code {
+        background-color: #fbe5e1;
+        color: #c0341d;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+    </style>
+    <style>
+      @media print {
+        #ghostery-purple-box {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body data-gr-c-s-loaded="true">
+    <!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu 
+     podle použitého editoru -->
+
+    <h1>Mzdy a Personalistika (Payday)</h1>
+    <!-- Nahradte názvem svého zadání -->
+
+    <dl>
+      <dt>Autoři</dt>
+      <dd>
+        Jan Demel
+        <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+        <a href="mailto:xdemel01@stud.fit.vutbr.cz"
+          >xdemel01@stud.fit.vutbr.cz</a
+        >
+        - Návrh a implementácia api
+      </dd>
+      <dd>
+        Jozef Hruška
+        <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+        <a href="mailto:xhrusk25@stud.fit.vutbr.cz"
+          >xhrusk25@stud.fit.vutbr.cz</a
+        >
+        - Návrh a implementácia frontendu
+      </dd>
+      <dd>
+        Tomáš Korec
+        <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+        <a href="mailto:xkorec04@stud.fit.vutbr.cz"
+          >xkorec04@stud.fit.vutbr.cz</a
+        >
+        - Návrh a implementácia databázy, výpočtu mzdy
+      </dd>
+      <dt>URL aplikace</dt>
+      <dd>
+        <a href="https://iis-project.hruska.now.sh/" target="blank">https://iis-project.hruska.now.sh/ (frontend)</a><br>
+        <a href="http://payday-api-2.herokuapp.com/" target="blank">http://payday-api-2.herokuapp.com/ (backend)</a>
+      </dd>
+    </dl>
+
+
+
+    <h2>Uživatelé systému pro testování</h2>
+    <table>
+      <tbody>
+        <tr>
+          <th>Login</th>
+          <th>Heslo</th>
+          <th>Role</th>
+        </tr>
+        <tr>
+          <td>admin@test.com</td>
+          <td>mysuperpassword</td>
+          <td>Administrátor</td>
+        </tr>
+        <tr>
+          <td>accountant@test.com</td>
+          <td>mysuperpassword</td>
+          <td>Mzdová účetní</td>
+        </tr>
+        <tr>
+          <td>personalist@test.com</td>
+          <td>mysuperpassword</td>
+          <td>Personalistka</td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+    
+    <h2>Use case diagram</h2>
+    <dd>
+      <a href="https://drive.google.com/open?id=1bmls4FOSS0gETWFHXglth2OC1VUCc-KD" target="blank">https://drive.google.com/open?id=1bmls4FOSS0gETWFHXglth2OC1VUCc-KD</a>
+    </dd>
+
+
+
+    <h2>Implementace</h2>
+    <h3>Frontend</h3>
+    <p>Aplikácia je vytvorená kompletne v jazyku TypeScript s využitím knižnice React vo verzii 16.12.0.</p>
+
+    <h4>Server-side rendering</h4>
+    Implementovaný framework Next.js, ktorá zabezpečuje render na strane serveru. Bežné aplikácie v Reacte a iných JavaScript frameworkoch/knižniciach bývajú často pomalé, pretože
+    tvorba DOMu prebieha na strane klienta až po obdržaní zdrojového kódu. Framework Next.js umožňuje pri nasadení vytvoriť optimalizovanú verziu aplikácie rozdelené do viacerých menších balíčkov. Klientovi je už zasielaná predom vytvorená DOM štruktúra.
+
+    <h4>Získavanie dát</h4>
+    Dáta sú získavané z REST API pomocou knižnice Axios, ktorá umožňuje jednoducho zasielať a spracovávať HTTP požiadavky. 
+
+    <h4>Uchovávanie dát</h4>
+    Dáta sú po prijatí od API uchovávané v globálnom stave aplikácie vytvorem pomocou knižnice Redux alebo lokálne vo vnútornom stave jednotlivých komponént.
+
+    <h4>Štýly</h4>
+    Písané za pomoci kničnice styled-components, ktorá umožňuje využiť benefity ES6 a CSS pre dynamické vytváranie kaskádových štýlov. Jadrom štýlov v aplikácii je objekt (tzv. téma), ktorá uchováva často používané hodnoty pre ich jednoduchšie znovupoužitie.
+    Aplikácia sa plne prispôsobuje rôznym typom zariadení, testované na viacerých štandardných rozlíšeniach.
+
+    <h4>Manipulácia s dátami</h4>
+    Komplexnejšia správa dát je vykonávaná pomocou funkcionálneho programovania a knižnice Ramda. 
+
+    <h4>Adresárová štruktúra pod</h4>
+    <ul>
+      <li><strong>pages</strong> - zložka využívaná knižnicou Next.js pre file-system routing (každá defaultne exportovaná komponeta symbolizuje stránku)</li>
+      <li><strong>src</strong></li>
+      <ul>
+        <li><strong>actions</strong> - definícia typov systémových akcii, ktorými je možné manipulovať s globálnym stavom aplikácie</li>
+        <li><strong>api</strong> - exportované jednotlivé funkcie využívané na komunikáciu s API</li>
+        <li><strong>components</strong> - komponenty knižnice React</li>
+        <li><strong>next</strong> - pomocné funkcie pre serverovú časť (napríklad overenie, či má užívateľ prístup k danej stránke)</li>
+        <li><strong>reducers</strong> - logika definujúca zmenu globálneho stavu pri odoslaní určitých akcií</li>
+        <li><strong>selectors</strong> - pure functions využívané pre jednoduché čítanie globálneho stavu aplikácie</li>
+        <li><strong>types</strong> - definované typy pre typovú kontrolu jazyka TypeScript</li>
+      </ul>
+    </ul>
+
+    <h3>REST API</h3>
+    <p>API je implementována v jazyce TypeScript pomocí frameworku Koa (<a href="https://koajs.com/" target="blank">https://koajs.com/</a>). Pro připojení do databáze byl použit Knex (<a href="https://knexjs.org/" target="blank">https://knexjs.org/</a>).</p>
+    <h4>Adresářová struktura</h4>
+    <ul>
+      <li>src (zdrojové soubory)</li>
+      <ul>
+        <li>config (konfigurace projektu)</li>
+        <li>controllers (validace request a volání příslušné operation s validovanými daty)</li>
+        <li>database (setup databáze)</li>
+        <ul>
+          <li>migrations (migrace databáze)</li>
+          <li>models (modely pro práci s knexem)</li>
+          <li>seeds (data pro databázi)</li>
+        </ul>
+        <li>middleware (middlewares - funkce, kterými se ověřuje request)</li>
+        <li>operations (business logika)</li>
+        <li>repository (ORM nad databází)</li>
+        <li>routes (implementace jednoduchého routeru)</li>
+        <li>services (služby, které api využívá)</li>
+        <li>types (typy do TypeScriptu)</li>
+        <li>utils (pomocné funkce)</li>
+        <li>validations (validace pomocí jsonschema)</li>
+      </ul>
+      <li>.eslintrc.js (nastavení pro linter)</li>
+      <li>.gitignore</li>
+      <li>docker-compose.yaml (nastavení dockeru)</li>
+      <li>package.json (informace o api, knihovny a skripty)</li>
+      <li>tsconfig.json (konfigurace pro TypeScript)</li>
+    </ul>
+
+    <h4>Environment proměnné</h4>
+    <p>API pracuje s těmito env proměnnými:</p>
+    <ul>
+      <li>PORT - Port, na kterém se aplikace má spustit</li>
+      <li>DATABASE_URL - connection string pro připojení do databáze</li>
+      <li>SECURITY_SECRET_HASH - security hash pro "posolení" hesel v systému</li>
+      <li>NODE_ENV - prostředí, kde je aplikace spuštěna</li>
+    </ul>
+
+    <p>V případě, že daná proměnná není před spuštěním definována, použijou se implicitní hodnoty dané konfigurací v adresáři <span class="inline-code">./backend/config</span></p>
+
+    <h4>NPM Skripty</h4>
+    <p>V souboru ./backend/package.json jsou definovené skripty pro ulehčení práce s API. Pro spuštění těchto skriptů se musíte nácházet v adresáři ./backend.<br> Popis skriptů:</p>
+    <ul>
+      <li>npm run build - zkompiluje projekt z typescriptu do javascriptu</li>
+      <li>npm run dev - spustí vývojové prostředí (nodemon kontroluje změny v souborech a automaticky restartuje API)</li>
+      <li>npm run lint - spustí lint test (zda kód vyhovuje stylu psaní)</li>
+      <li>npm run migrate:latest - spustí migrations</li>
+      <li>npm run migrate:make NAZEV_MIGRACE - vytvoří ve složce ./backend/src/database/migrations nový soubor migrace</li>
+      <li>npm run migrate:rollback - smaže celou strukturu databáze</li>
+      <li>npm run migrate:down - smaže poslední provedenou migraci</li>
+      <li>npm run migrate:up - provede následující migraci</li>
+      <li>npm run seed:make NAZEV_SEEDU - vytvoří nový seed</li>
+      <li>npm run seed:run - vloží do databáze všechny data ze seedu</li>
+      <li>npm run docker-build - buildne docker image</li>
+    </ul>
+
+    <h4>Migrace databáze</h4>
+    <p>Vytvoření struktury databáze probíhá spuštěním příkazu <span class=="inline-code">npm run migrate:latest</span>. Tento příkaz provede všechny migrace, které se nacházejí ve složce ./backend/src/database/migrations 
+    chronologicky podle timestampu na začátku souboru.</p>
+
+    <h4>Seedování databáze</h4>
+    <p>Pro naplnění databáze daty slouží příkaz <span class="inline-code">npm run seed:run</span>. Tento příkaz provede seedy, které se nacházejí ve složce ./backend/src/database/seeds 
+    chronologicky podle timestampu na začátku soubor. Soubory, které nemají timestamp se vykonají jako poslední.</p>
+
+    <h4>Autentifikace uživatele</h4>
+    <p>Pro autentifikaci uživatelů je využit JWT (json web token). Tento token je vygenerován API při přihlášení. Pro podpis tokenu je využito proměnné <span class="inline-code">SECURITY_SECRET_HASH</span> nacházející se v konfiguračních souborech 
+      - viz. sekce o struktuře adresářů. Payload tohoto JWT nese údaje o uživateli, jeho oprávnění a expiraci. Při každém requestu (autorizovaném) na API je vyžádáno vyplnění Authorization hlavičky v HTTP požadavku.
+    API následně v závislosti na obsahu JWT vyhodnotí, zda má uživatel přístup k datům, či nikoliv.<br>Systém rozeznává následující oprávnění:</p>
+    <ol>
+      <li>ADMIN - administrátor systému - spravuje uživatele, může všechno</li>
+      <li>PERSONALIST - personalistka - vkládá nové zaměstnance</li>
+      <li>ACCOUNTANT - účetní - může upravovat data zaměstnanců, vytvářet mzdové záznamy zaměstnanců, počítat mzdy</li>
+    </ol>
+
+    <h4>API Dependencies</h4>
+    <h5>Vývojové dependencies</h5>
+    <ol>
+      <li>"@strv/eslint-config-node": "^2.1.2"</li>
+      <li>"@strv/eslint-config-typescript": "^2.1.3"</li>
+      <li>"@types/bluebird": "^3.5.27"</li>
+      <li>"@types/kcors": "^2.2.3"</li>
+      <li>"@types/koa": "^2.0.50"</li>
+      <li>"@types/koa-bodyparser": "^4.3.0"</li>
+      <li>"@types/koa-router": "^7.0.42"</li>
+      <li>"@types/node": "^12.7.9"</li>
+      <li>"@types/pino": "^5.8.10"</li>
+      <li>"eslint": "~6.7.1"</li>
+      <li>"nodemon": "^1.19.3"</li>
+      <li>"ts-node-dev": "^1.0.0-pre.44"</li>
+    </ol>
+
+    <h5>Produkční dependencies</h5>
+    <ol>
+      <li>"@types/bcrypt": "^3.0.0"</li>
+      <li>"@types/bcryptjs": "^2.4.2"</li>
+      <li>"@types/jsonschema": "^1.1.1"</li>
+      <li>"@types/jsonwebtoken": "^8.3.4"</li>
+      <li>"@types/lodash": "^4.14.141"</li>
+      <li>"bcryptjs": "^2.4.3"</li>
+      <li>"bluebird": "^3.7.0"</li>
+      <li>"dotenv": "^8.1.0"</li>
+      <li>"jsonschema": "^1.2.4"</li>
+      <li>"jsonwebtoken": "^8.5.1"</li>
+      <li>"kcors": "^2.2.2"</li>
+      <li>"knex": "^0.19.4"</li>
+      <li>"koa": "^2.8.2"</li>
+      <li>"koa-bodyparser": "^4.2.1"</li>
+      <li>"koa-compress": "^3.0.0"</li>
+      <li>"koa-router": "^7.4.0"</li>
+      <li>"lodash": "^4.17.15"</li>
+      <li>"moment": "^2.24.0"</li>
+      <li>"objection": "^1.6.11"</li>
+      <li>"pg": "^7.12.1"</li>
+      <li>"pino": "^5.13.4"</li>
+      <li>"pino-pretty": "^3.2.1"</li>
+      <li>"ts-node": "^8.4.1"</li>
+      <li>"typescript": "^3.6.3"</li>
+    </ol>
+    
+    <h4>Výpočet mzdy</h4>
+    <p>
+      Zložka: /backend/src/services/*<br />
+      Jazyk: Python<br />
+      vystupy:<br />
+      - vypocitane udaje sa zapisu do tabulky mesacneho vypoctu m.vypocet<br />
+      ktora obsahuje odobne cislo, obdobie a 2000 znakove pole, do ktoreho sa
+      zapisuju vypocitane udaje v zakodovanom tvare <br />
+      na poziciu definovanu v takulke m.vektor.<br />
+      <br />
+      vstupy:<br />
+      - aktualne obdobie (za ktore sa pocitaju mzdy)<br />
+      - id zamestnanca<br />
+      - data v tabulke m.udaje a m.osoba<br />
+      - kalendar (kazdy pracovnik ma svoj kalendar definovany v mzdovych
+      udajoch) <br />
+      - datum nastupu (z kmenovych udajov pracovnika)<br />
+      - datum ukoncenia pracovneho pomeru (z kmenovych udajov pracovnika)<br />
+      - mzdove udaje (vyfiltrovane aktualne platne podla aktualneho obdobia v
+      torom sa pocitaju mzdy)<br />
+      - zmenove kody vyfiltrovane pre aktualne obdobie za ktore sa pocitaju
+      mzdy<br />
+    </p>
+
+    <h3>Databáze</h3>
+    <p>ER diagram</p>
+    <dd>
+      <a href="https://dbdiagram.io/d/5dd43412edf08a25543e1edc" target="blank"
+        >https://dbdiagram.io/d/5dd43412edf08a25543e1edc</a
+      >
+    </dd>
+
+    <h2>Instalace</h2>
+
+    <h3>Softwarové požadavky</h3>
+    <ul>
+      <li>Node v10.16.3</li>
+      <li>NPM v6.9.0</li>
+      <li>Python v2.7.13 (včetně knihovny psycopg2 - <a href="https://pypi.org/project/psycopg2/" target="blank">https://pypi.org/project/psycopg2/</a>)</li>
+      <li>Docker v19.03.2</li>
+    </ul>
+
+    <h3>Instalace API a databáze</h3>
+    <ul>
+      <li>přepněte se do adresáře ./backend</li>
+      <li>nainstalujte si všechny dependencies příkazem <span class="inline-code">npm install</span></li>
+      <li>zbuilděte images příkazem <span class="inline-code">docker-compose build</span></li>
+      <li>spusťte databázi a API na pozadí příkazem <span class="inline-code">docker-compose up -d api database</span></li>
+      <li>můžeme se přesvědčit, že opravdu došlo ke spuštění příkazem <span class="inline-code">docker-compose ps</span></li>
+      <li>v tuto chvíli již databáze běží, ale je prázdná. Spustíme migrations, což jsou aditivní úpravy struktury databáze <span class="inline-code">npm run migrate:latest</span></li>
+      <li>naplníme databázi daty příkazem <span class="inline-code">npm run seed:run</span></li>
+    </ul>
+
+    <h3>Inštalácia klienta (frontend)</h3>
+    <ol>
+      <li>Prepnite sa do adresára ./frontend</li>
+      <li>Nainštalujte si potrebné dependencies príkazom <span class="inline-code">npm install</span></li>
+      <li>Zostavte si produkčnú verziu frontendu príkazom <span class="inline-code">npm run build</span></li>
+      <li>Exportujte ENV obsahujúcu adresu backendu: (napr. <span class="inline-code">API_URL=http://localhost:5000</span>)</li>
+      <li>Spustite si Next.js server príkazom <span class="inline-code">npm start</span> (uistite sa, že port 3000 nie je obsadený)</li>
+    </ol>
+
+
+    <h2>Známé problémy</h2>
+    <p>
+      Při prvním spuštění seeds jsou do databáze "natvrdo" vloženy primární klíče některých tabulek. To způsobuje, že se neinkrementuje sekvence generování primárních klíču a tudíž prvních pár 
+      requestů na určité endpointy selže chybou "duplicate key - constraints". Řešením tohoto problému je request několikrát opakovat. Konkrétně:
+      <ul>
+        <li>První vytváření nového zaměstnance: 4x (5. request projde)</li>
+        <li>První vytváření mzdové složky: relativní vůči cílovému zaměstnanci  (maximálně však 6x)</li>
+      </ul>
+    </p>
+  </body>
+</html>

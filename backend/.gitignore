@@ -4,9 +4,11 @@ node_modules
 .env
 
 *.log
+*.pyc
 *~
 *#
 .DS_Store
 .nyc_output
 
 .vscode
+dist

@@ -1,0 +1,7 @@
+{
+  "name": "iis-project",
+  "version": 2,
+  "env": {
+    "API_URL": "@api_url"
+  }
+}

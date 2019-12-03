@@ -1,0 +1,24 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - 5000:5000
+    environment:
+      - DATABASE_URL=postgres://postgres@database/payday-db
+
+  database:
+    image: postgres:11.2
+    container_name: payday
+    environment:
+      POSTGRES_DB: payday-db
+    ports:
+      - 5432:5432
+
+  database_tests:
+    image: postgres:11.2
+    container_name: payday-tests
+    environment:
+      POSTGRES_DB: payday-db-tests
+    ports:
+      - 5433:5432
